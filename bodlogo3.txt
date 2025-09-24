@@ -1,33 +1,10 @@
 def check_integer_conditions(n):
-    """
-    Check if an integer is greater than 4^4 and has remainder 4 when divided by 34.
-    
-    Args:
-        n: Integer to check
-        
-    Returns:
-        bool: True if n > 4^4 and n % 34 == 4, False otherwise
-    """
-    # Calculate 4^4
-    four_to_fourth = 4 ** 4  # This equals 256
-    
-    # Check both conditions:
-    # 1. n > 4^4 (n > 256)
-    # 2. n % 34 == 4
+    four_to_fourth = 4 ** 4 
     return n > four_to_fourth and n % 34 == 4
-
-
 def detailed_check(n):
-    """
-    Provide detailed information about the checks for debugging purposes.
-    
-    Args:
-        n: Integer to check
-    """
     four_to_fourth = 4 ** 4
     greater_than_check = n > four_to_fourth
     mod_check = n % 34 == 4
-    
     print(f"Number: {n}")
     print(f"4^4 = {four_to_fourth}")
     print(f"Is {n} > {four_to_fourth}? {greater_than_check}")
@@ -35,9 +12,6 @@ def detailed_check(n):
     print(f"Is {n} % 34 == 4? {mod_check}")
     print(f"Both conditions met? {greater_than_check and mod_check}")
     print("-" * 40)
-
-
-# Test the function with the provided examples
 def test_function():
     test_cases = [
         (922, True),
@@ -49,8 +23,7 @@ def test_function():
     print("=" * 50)
     print("Testing the function:")
     print("=" * 50)
-    
-    for i, (input_num, expected) in enumerate(test_cases, 1):
+     for i, (input_num, expected) in enumerate(test_cases, 1):
         result = check_integer_conditions(input_num)
         status = "✓" if result == expected else "✗"
         
@@ -58,37 +31,20 @@ def test_function():
         detailed_check(input_num)
         print(f"Expected: {expected}, Got: {result}")
         print("=" * 50)
-
-
-# Additional helper function to find numbers that satisfy the condition
 def find_numbers_in_range(start, end):
-    """
-    Find all numbers in a given range that satisfy both conditions.
-    
-    Args:
-        start: Start of range
-        end: End of range
-    """
     valid_numbers = []
     for n in range(start, end + 1):
         if check_integer_conditions(n):
             valid_numbers.append(n)
     return valid_numbers
-
-
-# Run the tests
 if __name__ == "__main__":
     test_function()
-    
-    # Show some examples of numbers that satisfy the condition
     print("\nSome numbers that satisfy both conditions:")
     examples = find_numbers_in_range(257, 1000)[:10]  # First 10 valid numbers
     for num in examples:
         print(f"{num}: {num} > 256 = True, {num} % 34 = {num % 34}")
-    
-    # Interactive example
     print(f"\nExample usage:")
     test_number = 922
     result = check_integer_conditions(test_number)
     print(f"check_integer_conditions({test_number}) = {result}")
-    detailed_check(test_number)
+   detailed_check(test_number)
